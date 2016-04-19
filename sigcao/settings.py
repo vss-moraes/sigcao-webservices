@@ -85,17 +85,6 @@ WSGI_APPLICATION = 'sigcao.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'sigcao',
-        'USER': 'vsant',
-        'PASSWORD': 'batman',
-        'HOST': '',
-        'PORT': '',
-    }
-}
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -153,3 +142,15 @@ if ON_OPENSHIFT:
 
     STATIC_ROOT = os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'wsgi', 'static')
     COMPRESS_ROOT = STATIC_ROOT
+
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'sigcao',
+            'USER': 'vsant',
+            'PASSWORD': 'batman',
+            'HOST': '',
+            'PORT': '',
+        }
+    }
