@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+import urlparse
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -57,7 +58,7 @@ MIDDLEWARE_CLASSES = [
 # REST_FRAMEWORK = {
 #    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAdminUser',),
 #    'PAGE_SIZZE': 10
-#}
+# }
 
 CORS_ORIGIN_ALLOW_ALL = True
 
@@ -85,7 +86,7 @@ WSGI_APPLICATION = 'sigcao.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-#DATABASES = {
+# DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.postgresql',
 #        'NAME': 'sigcao',
@@ -96,14 +97,15 @@ WSGI_APPLICATION = 'sigcao.wsgi.application'
 #    }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME':     os.environ['OPENSHIFT_APP_NAME'],
-        'USER':     os.environ['OPENSHIFT_POSTGRESQL_DB_USERNAME'],
-        'PASSWORD': os.environ['OPENSHIFT_POSTGRESQL_DB_PASSWORD'],
-        'HOST':     os.environ['OPENSHIFT_POSTGRESQL_DB_HOST'],
-        'PORT':     os.environ['OPENSHIFT_POSTGRESQL_DB_PORT'],
+db_url = urlparse.urlparse(os.environ.get('OPENSHIFT_POSTGRESQL_DB_URL'))
+
+DATABASES = {'default': {
+    'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    'NAME': os.environ['OPENSHIFT_APP_NAME'],
+    'USER': db_url.username,
+    'PASSWORD': db_url.password,
+    'HOST': db_url.hostname,
+    'PORT': db_url.port,
     }
 }
 
