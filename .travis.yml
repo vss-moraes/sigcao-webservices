@@ -1,0 +1,17 @@
+
+language: python
+python:
+- '3.3'
+script:
+- python manage.py makemigrations
+- python manage.py migrate
+
+deploy:
+  provider: openshift
+  user: vsntana0212@gmail.com
+  password:
+    secure: T11XjC5mLJtbUoFdN2pMSZyeKRhAjehkQEzPbYo7LdzyOX7gWw0/LupRDiiqp55rI+2O8HzufZASeBdP2P+j59F5RmES2CrsDnDrTO1dfUCtwb3DjDj7CjsSO5ey/7+zru4f3nMGxTnfppX1bQG4ISftNkDspk+M9T5nD4VBpm4oHMr4e4Wd1+BCB5aQHeOJtJUEJhEa0zA29SYBP1xk6P7eQqcxDIzT0a56BNraqfQCTQ9Ahedg0EPsMzEQe0rL6NZIIUIrliRr/WbyrSF7ERU9IWcRqNv7qs6jek2vIv1VAN2FZrSFRuxdSm4Qc2zInhPSgvTqpzMBr8FlD0l+5h3nPwn4B1gAGjeiF71whpl4dS+6uJet+ZI7Cal1lDHwMGjsZIqSgEAGUcOHoiy8IYycEl14BdyzAKZP4tQ63WZGeOHThn3BIHFyMXYfojAoU0NiQtaofhBck+d12D4BPLe/RnP1Np1H90GUreuwuO3OIVvT9mfACcF3UGmHhjNi1NDvtsYHAUBGifbymEes2H93YIajHts7j//Lnqv8cVh7a2M0XrAHUyl+ZUhqJ0J4Wq7Y7NJawX1Eqy6EiiPV1hohCs66/hCN6jvSVVqrmJwjtI6yJSEzpwvsMR5IEdawIQ5LQPu8MuKLb8bzjQomr9iWC0ikwlgLZfx/0ElCI6Y=
+  app: sigcao-webservices
+  domain: sigcao
+  on:
+    repo: vss-moraes/sigcao-webservices
