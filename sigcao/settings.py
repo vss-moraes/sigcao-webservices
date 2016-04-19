@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
-import urllib.parse as urlparse
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -86,30 +85,17 @@ WSGI_APPLICATION = 'sigcao.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-# DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql',
-#        'NAME': 'sigcao',
-#        'USER': 'vsant',
-#        'PASSWORD': 'batman',
-#        'HOST': '',
-#        'PORT': '',
-#    }
-# }
-
-db_url = urlparse.urlparse(os.environ.get('OPENSHIFT_POSTGRESQL_DB_URL'))
-
-DATABASES = {'default': {
-    'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    'NAME': os.environ['OPENSHIFT_APP_NAME'],
-    'USER': db_url.username,
-    'PASSWORD': db_url.password,
-    'HOST': db_url.hostname,
-    'PORT': db_url.port,
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'sigcao',
+        'USER': 'vsant',
+        'PASSWORD': 'batman',
+        'HOST': '',
+        'PORT': '',
     }
 }
 
-STATIC_ROOT = os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'wsgi', 'static')
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
