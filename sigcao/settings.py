@@ -85,6 +85,27 @@ WSGI_APPLICATION = 'sigcao.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'sigcao',
+#        'USER': 'vsant',
+#        'PASSWORD': 'batman',
+#        'HOST': '',
+#        'PORT': '',
+#    }
+# }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME':     os.environ['OPENSHIFT_APP_NAME'],
+        'USER':     os.environ['OPENSHIFT_POSTGRESQL_DB_USERNAME'],
+        'PASSWORD': os.environ['OPENSHIFT_POSTGRESQL_DB_PASSWORD'],
+        'HOST':     os.environ['OPENSHIFT_POSTGRESQL_DB_HOST'],
+        'PORT':     os.environ['OPENSHIFT_POSTGRESQL_DB_PORT'],
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
@@ -123,34 +144,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 STATIC_URL = '/static/'
-
-ON_OPENSHIFT = "OPENSHIFT_APP_NAME" in os.environ
-
-if ON_OPENSHIFT:
-    URL_DO_AMBIENTE = os.environ['OPENSHIFT_APP_DNS']
-
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME':     os.environ['OPENSHIFT_APP_NAME'],
-            'USER':     os.environ['OPENSHIFT_POSTGRESQL_DB_USERNAME'],
-            'PASSWORD': os.environ['OPENSHIFT_POSTGRESQL_DB_PASSWORD'],
-            'HOST':     os.environ['OPENSHIFT_POSTGRESQL_DB_HOST'],
-            'PORT':     os.environ['OPENSHIFT_POSTGRESQL_DB_PORT'],
-        }
-    }
-
-    STATIC_ROOT = os.path.join(os.environ['OPENSHIFT_REPO_DIR'], 'wsgi', 'static')
-    COMPRESS_ROOT = STATIC_ROOT
-
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'sigcao',
-            'USER': 'vsant',
-            'PASSWORD': 'batman',
-            'HOST': '',
-            'PORT': '',
-        }
-    }
