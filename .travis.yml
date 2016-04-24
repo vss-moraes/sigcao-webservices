@@ -1,19 +1,16 @@
 
 language: python
 python:
-- '3.3'
-script:
-- python manage.py makemigrations
-- python manage.py migrate
-
-# install: "pip install -r requirements.txt"
+- '3.4'
 
 deploy:
-  provider: openshift
-  user: vsntana0212@gmail.com
-  password:
-    secure: T11XjC5mLJtbUoFdN2pMSZyeKRhAjehkQEzPbYo7LdzyOX7gWw0/LupRDiiqp55rI+2O8HzufZASeBdP2P+j59F5RmES2CrsDnDrTO1dfUCtwb3DjDj7CjsSO5ey/7+zru4f3nMGxTnfppX1bQG4ISftNkDspk+M9T5nD4VBpm4oHMr4e4Wd1+BCB5aQHeOJtJUEJhEa0zA29SYBP1xk6P7eQqcxDIzT0a56BNraqfQCTQ9Ahedg0EPsMzEQe0rL6NZIIUIrliRr/WbyrSF7ERU9IWcRqNv7qs6jek2vIv1VAN2FZrSFRuxdSm4Qc2zInhPSgvTqpzMBr8FlD0l+5h3nPwn4B1gAGjeiF71whpl4dS+6uJet+ZI7Cal1lDHwMGjsZIqSgEAGUcOHoiy8IYycEl14BdyzAKZP4tQ63WZGeOHThn3BIHFyMXYfojAoU0NiQtaofhBck+d12D4BPLe/RnP1Np1H90GUreuwuO3OIVvT9mfACcF3UGmHhjNi1NDvtsYHAUBGifbymEes2H93YIajHts7j//Lnqv8cVh7a2M0XrAHUyl+ZUhqJ0J4Wq7Y7NJawX1Eqy6EiiPV1hohCs66/hCN6jvSVVqrmJwjtI6yJSEzpwvsMR5IEdawIQ5LQPu8MuKLb8bzjQomr9iWC0ikwlgLZfx/0ElCI6Y=
-  app: sigcao-webservices
-  domain: sigcao
+  provider: heroku
+  api_key:
+    secure: F5VYlP5zD3iSJLJvEBoJjUdp2vFzpaNLI2ylKYWrEuTeVsjmA9ivu+nMwN99ecjs1+2OtdC3u6T6R4Xm8SblqFJ5rYGYbhjRzfRCLhNNp8koDsix4qF9PU4TTiVbcVjcUEXeRxO3wdeCoVi/fjqIhTDJWhx0RIIX/5FLQtgC9GRfYt8k3Xy7xTFCWMl+5msh2o4fMbmYOCBWWZjSmii3gF0jXeL8KxlBBjBBjRDN/2j2RrL2ee2lyrDO7eh9i2vwnQ0QElwgf3A4e0KFHbPyR37pLg5HZ4/DmDogy0ZPvzjCrKZ0v787X8UrCq76z3g7jDP+qHJ+k1SQadN4UC/x+ZuqfYGdosP/wwKZcU3IJoTql3KgVRGaO5eQQglk+o83I/OzHJduy0agI4LHlxs5emrOxSGzf29cbQP3MYmkm363GVA2WGnW1Wa7xWJSQih+Ik/V12H5kSVsv0s5M8ZG54mMrwtnPi/2706LvljXclVDREXuc+pyr4C5sz1qCiwFqUwUm5stLJTW2EW1Gqe/cJwEFTrv9f/+bgitj3zHpHIRlIoPTu+pNnaGfbg8TsrGCE+VUuM+PVuHXInir44RMZx96e3QyjfqITqPQVnVJKncxc8qG4DmMXT9ZyqHiFUZLk1+oDY5JXh5fFRTLjyMio3HEkv7iwesS19+DwXiMtA=
+    run: 
+      - "python manage.py makemigrations"
+      - "python manage.py migrate"
+  app: sigcao
   on:
     repo: vss-moraes/sigcao-webservices
+    branch: master
