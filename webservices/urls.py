@@ -4,8 +4,8 @@ from webservices import views
 
 
 urlpatterns = [
-    url(r'^enderecos/$', views.ListaEndereco.as_view()),
-    url(r'^enderecos/(?P<pk>[0-9]+)/$', views.DetalheEndereco.as_view()),
+    url(r'^ocorrencias/$', views.FiltraOcorrencias.as_view()),
+    url(r'^ocorrencias/(?P<pk>[0-9]+)/$', views.DetalheOcorrencia.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
