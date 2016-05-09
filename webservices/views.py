@@ -1,30 +1,32 @@
 from webservices.models import Ocorrencia
-from webservices.serializers import OcorrenciaSeralizer
+from webservices.serializers import OcorrenciaSerializer
 from rest_framework import generics
-
-
-class DetalheOcorrencia(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Ocorrencia.objects.all()
-    serializer_class = OcorrenciaSeralizer
+from itertools import chain
 
 
 class FiltraOcorrencias(generics.ListAPIView):
-    serializer_class = OcorrenciaSeralizer
+    serializer_class = OcorrenciaSerializer
 
     def get_queryset(self):
         queryset = Ocorrencia.objects.all()
-        doenca = self.request.query_params.get('doenca', None)
-        faixa_etaria = self.request.query_params.get('faixa_etaria', None)
-        sexo = self.request.query_params.get('sexo', None)
-        raca = self.request.query_params.get('raca', None)
 
-        if doenca is not None:
-            queryset = queryset.filter(doenca__nome=doenca)
-        if faixa_etaria is not None:
-            queryset = queryset.filter(faixa_etaria__nome=faixa_etaria)
+        sexo = self.request.query_params.get('sexo', None)
+        faixas_etarias = self.request.query_params.getlist('faixa_etaria')
+        racas = self.request.query_params.getlist('raca')
+        doencas = self.request.query_params.getlist('doenca')
+
         if sexo is not None:
-            queryset = queryset.filter(sexo__nome=sexo)
-        if raca is not None:
-            queryset = queryset.filter(raca__nome=raca)
+            queryset = list(queryset.filter(sexo__nome=sexo))
+        if len(doencas) > 0:
+            queryset = [item for item in queryset if str(item.doenca) in doencas]
+        if len(faixas_etarias) > 0:
+            queryset = [item for item in queryset if str(item.faixa_etaria) in faixas_etarias]
+        if len(racas) > 0:
+            queryset = [item for item in queryset if str(item.raca) in racas]
 
         return queryset
+
+
+class EnviaOcorrencia(generics.CreateAPIView):
+    queryset = Ocorrencia.objects.all()
+    serializer_class = OcorrenciaSerializer

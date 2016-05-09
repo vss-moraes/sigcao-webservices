@@ -1,0 +1,5 @@
+[
+{ "model": "webservices.FaixaEtaria", "pk": 1, "fields": { "nome": "Filhote"} },
+{ "model": "webservices.FaixaEtaria", "pk": 2, "fields": { "nome": "Jovem"} },
+{ "model": "webservices.FaixaEtaria", "pk": 3, "fields": { "nome": "Adulto"} },
+{ "model": "webservices.FaixaEtaria", "pk": 4, "fields": { "nome": "Idoso"} } ]

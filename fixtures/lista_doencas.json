@@ -1,0 +1,9 @@
+[
+{ "model": "webservices.Doenca", "pk": 1, "fields": { "nome": "Cinomose"} },
+{ "model": "webservices.Doenca", "pk": 2, "fields": { "nome": "Coronavirose"} },
+{ "model": "webservices.Doenca", "pk": 3, "fields": { "nome": "Hepatite Infecciosa"} },
+{ "model": "webservices.Doenca", "pk": 4, "fields": { "nome": "Leishmaniose"} },
+{ "model": "webservices.Doenca", "pk": 5, "fields": { "nome": "Leptospirose"} },
+{ "model": "webservices.Doenca", "pk": 6, "fields": { "nome": "Parainfluenza"} },
+{ "model": "webservices.Doenca", "pk": 7, "fields": { "nome": "Parvovirose"} },
+{ "model": "webservices.Doenca", "pk": 8, "fields": { "nome": "Raiva"} } ]

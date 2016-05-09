@@ -5,7 +5,7 @@ from webservices import views
 
 urlpatterns = [
     url(r'^ocorrencias/$', views.FiltraOcorrencias.as_view()),
-    url(r'^ocorrencias/(?P<pk>[0-9]+)/$', views.DetalheOcorrencia.as_view()),
+    url(r'^ocorrencias/nova/$', views.EnviaOcorrencia.as_view()),
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
