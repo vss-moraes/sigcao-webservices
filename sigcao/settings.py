@@ -26,7 +26,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['vss-moraes.github.io']
+ALLOWED_HOSTS = ['vss-moraes.github.io', 'sigcao.herokuapp.com']
 
 
 # Application definition
