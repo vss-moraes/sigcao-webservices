@@ -8,20 +8,12 @@ from rest_framework import serializers
 #        fields = ('endereco_completo', 'bairro', 'cidade', 'estado')
 
 
+class EnvioOcorrenciaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Ocorrencia
+
+
 class OcorrenciaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Ocorrencia
-        fields = (
-            'id',
-            'doenca',
-            'sexo',
-            'faixa_etaria',
-            'raca',
-            'data',
-            'endereco_completo',
-            'bairro',
-            'cidade',
-            'estado',
-            'latitude',
-            'longitude')
         depth = 1

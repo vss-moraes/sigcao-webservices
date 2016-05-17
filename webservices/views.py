@@ -1,5 +1,5 @@
 from webservices.models import Ocorrencia
-from webservices.serializers import OcorrenciaSerializer
+from webservices.serializers import OcorrenciaSerializer, EnvioOcorrenciaSerializer
 from rest_framework import generics
 import json
 
@@ -32,4 +32,4 @@ class FiltraOcorrencias(generics.ListAPIView):
 
 
 class EnviaOcorrencia(generics.CreateAPIView):
-    serializer_class = OcorrenciaSerializer
+    serializer_class = EnvioOcorrenciaSerializer
