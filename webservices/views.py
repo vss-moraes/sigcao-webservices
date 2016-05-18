@@ -31,5 +31,8 @@ class FiltraOcorrencias(generics.ListAPIView):
         return queryset
 
 
-class EnviaOcorrencia(generics.CreateAPIView):
+class EnviaOcorrencia(generics.ListCreateAPIView):
     serializer_class = EnvioOcorrenciaSerializer
+
+    def get_queryset(self):
+        return None
