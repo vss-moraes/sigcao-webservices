@@ -22,11 +22,15 @@ class FiltraOcorrencias(generics.ListAPIView):
         faixas_etarias = self.termos_da_busca('faixa_etaria', 'fixtures/lista_faixa_etaria.json')
         doencas = self.termos_da_busca('doenca', 'fixtures/lista_doencas.json')
         sexo = self.request.query_params.get('sexo', None)
+        lat = self.request.query_params.getlist('lat')
+        lng = self.request.query_params.getlist('lng')
 
         queryset = Ocorrencia.objects.filter(raca__nome__in=racas).filter(doenca__nome__in=doencas).filter(faixa_etaria__nome__in=faixas_etarias)
 
         if sexo is not None:
             queryset = queryset.filter(sexo__nome=sexo)
+        if len(lat) > 0:
+            queryset = queryset.filter(longitude__range=(lng[1], lng[0])).filter(latitude__range=(lat[1], lat[0]))
 
         return queryset
 
