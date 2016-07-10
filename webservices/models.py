@@ -34,11 +34,23 @@ class Raca(models.Model):
         return self.nome
 
 
+class Veterinario(models.Model):
+    nome = models.CharField(max_length=100, default="")
+    estado = models.CharField(max_length=2, default="MS")
+    tipo_inscricao = models.CharField(max_length=10, default="Primária")
+    situacao = models.CharField(max_length=10, default="Atuante")
+    crmv = models.CharField(max_length=10, default="")
+
+    def __str__(self):
+        return self.crmv + " " + self.nome
+
+
 class Ocorrencia(models.Model):
     doenca = models.ForeignKey(Doenca, on_delete=models.CASCADE)
     sexo = models.ForeignKey(Sexo, on_delete=models.CASCADE)
     faixa_etaria = models.ForeignKey(FaixaEtaria, on_delete=models.CASCADE)
     raca = models.ForeignKey(Raca, on_delete=models.CASCADE)
+    veterinario = models.ForeignKey(Veterinario, on_delete=models.CASCADE)
 
     data = models.DateField(default=timezone.now)
     endereco_completo = models.CharField(max_length=200, default="")

@@ -412,4 +412,5 @@
 { "model": "webservices.Raca", "pk": 411, "fields": { "nome": "West highland white terrier"} },
 { "model": "webservices.Raca", "pk": 412, "fields": { "nome": "Westie"} },
 { "model": "webservices.Raca", "pk": 413, "fields": { "nome": "Whippet"} },
-{ "model": "webservices.Raca", "pk": 414, "fields": { "nome": "Yorkshire terrier"} } ]
+{ "model": "webservices.Raca", "pk": 414, "fields": { "nome": "Yorkshire terrier"} },
+{ "model": "webservices.Raca", "pk": 415, "fields": { "nome": "SRD - Sem Raça Definida"} } ]
