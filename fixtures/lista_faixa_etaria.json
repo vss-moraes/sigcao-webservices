@@ -1,5 +1,5 @@
 [
-{ "model": "webservices.FaixaEtaria", "pk": 1, "fields": { "nome": "Filhote"} },
-{ "model": "webservices.FaixaEtaria", "pk": 2, "fields": { "nome": "Jovem"} },
-{ "model": "webservices.FaixaEtaria", "pk": 3, "fields": { "nome": "Adulto"} },
-{ "model": "webservices.FaixaEtaria", "pk": 4, "fields": { "nome": "Idoso"} } ]
+{ "model": "webservices.FaixaEtaria", "pk": 1, "fields": { "nome": "Filhote (O - 6 meses)"} },
+{ "model": "webservices.FaixaEtaria", "pk": 2, "fields": { "nome": "Jovem (6 meses - 2 anos)"} },
+{ "model": "webservices.FaixaEtaria", "pk": 3, "fields": { "nome": "Adulto (2 anos - 8 anos)"} },
+{ "model": "webservices.FaixaEtaria", "pk": 4, "fields": { "nome": "Idoso (mais de 8 anos)"} } ]

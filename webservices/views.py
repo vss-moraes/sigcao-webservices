@@ -73,7 +73,7 @@ def buscaCRMV(request):
             resultados = documento.xpath(xpath)
             veterinario = Veterinario(nome=resultados[1], estado=resultados[2], tipo_inscricao=resultados[3], situacao=resultados[4], crmv=crmv)
             print(veterinario.nome + veterinario.estado + veterinario.tipo_inscricao + veterinario.situacao + veterinario.crmv)
-            if (veterinario.situacao == ' Atuante '):
+            if (veterinario.situacao.strip() == 'Atuante'):
                 veterinario.save()
                 serializer = VeterinarioSerializer(veterinario)
                 return JSONResponse(serializer.data, status=201)
@@ -87,5 +87,5 @@ def buscaCRMV(request):
     if (request.method == 'GET'):
         serializer = VeterinarioSerializer(veterinario)
         return JSONResponse(serializer.data)
-    print('Deu merda    ')
+    print('Deu merda')
     return HttpResponse(status=404)

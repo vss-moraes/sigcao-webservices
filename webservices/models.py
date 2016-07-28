@@ -21,7 +21,7 @@ class Sexo(models.Model):
 
 
 class FaixaEtaria(models.Model):
-    nome = models.CharField(max_length=8, default="")
+    nome = models.CharField(max_length=25, default="")
 
     def __str__(self):
         return self.nome
